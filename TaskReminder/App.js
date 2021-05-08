@@ -1,16 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native'
 import Tugas from './src/components/Tugas'
+
 const App = () => {
   return (
     <View style={styles.container}>
 
        {/* Tugas hari ini(Reyner Senduk dan Angelina Doringin)*/}
-       <View style={styles.taksWrapper}>
+       <View style={styles.tasksWrapper}>
          <Text style={styles.sectionTitle}>Tugas hari ini</Text>
 
          <View style={styles.items}>
-           {/* Disini tempat tugas di input*/}
+           {/* Disini tempat tugas di input (Reyner Senduk dan Angelina Doringin)*/}
            <Tugas text={'Tugas 1'}/>
            <Tugas text={'Tugas 2'}/>
          </View>
@@ -18,6 +19,20 @@ const App = () => {
        </View>
        
        
+       {/*Menulis tugas atau skedul (Kumendong Rivaldo dan Juliant Waluyan) */}
+       <KeyboardAvoidingView
+         behavior={Platform.OS === "ios" ? "padding" : "height"}
+         style={styles.writeTaskWrapper}
+      >
+        <TextInput style={styles.input} placeholder={'Tulis Tugas'} />
+
+        <TouchableOpacity >
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>+</Text>
+          </View>
+        </TouchableOpacity>
+      </KeyboardAvoidingView>
+
     </View>
   )
 }
@@ -27,7 +42,7 @@ const styles = StyleSheet.create({
    flex: 1,
    backgroundColor: '#E8EAED',
   },
-  taksWrapper: {
+  tasksWrapper: {
     paddingTop: 80,
     paddingHorizontal: 20,
   },
@@ -38,6 +53,33 @@ const styles = StyleSheet.create({
   items: {
     marginTop: 30,
   },
+  writeTaskWrapper: {
+    position: 'absolute',
+    bottom: 60,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center'
+  },
+  input: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: '#FFF',
+    borderRadius: 60,
+    borderColor: '#C0C0C0',
+    borderWidth: 1,
+    width: 250,
+
+  },
+  addWrapper: {
+    width: 60,
+    height: 60,
+    borderColor: '#FFF',
+    borderRadius: 60,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  addText: {},
 })
 
 export default App
