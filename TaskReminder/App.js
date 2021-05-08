@@ -1,8 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native'
 import Tugas from './src/components/Tugas'
 
-const App = () => {
+export default function App() {
+  const [task, setTask] = useState(); 
+
+  const handleAddTask = () => {
+    console.log(task);
+  }
+
   return (
     <View style={styles.container}>
 
@@ -24,9 +30,9 @@ const App = () => {
          behavior={Platform.OS === "ios" ? "padding" : "height"}
          style={styles.writeTaskWrapper}
       >
-        <TextInput style={styles.input} placeholder={'Tulis Tugas'} />
+        <TextInput style={styles.input} placeholder={'Tulis Tugas'} value={task} onChangeText={text => setTask(text)} />
 
-        <TouchableOpacity >
+        <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
@@ -82,4 +88,3 @@ const styles = StyleSheet.create({
   addText: {},
 })
 
-export default App
