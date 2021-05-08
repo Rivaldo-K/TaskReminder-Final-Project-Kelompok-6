@@ -11,8 +11,8 @@ const App = () => {
 
          <View style={styles.items}>
            {/* Disini tempat tugas di input*/}
-           <Task Text={'Task 1'}/>
-           <Task Text={'Task 2'}/>
+           <Task text={'Task 1'}/>
+           <Task text={'Task 2'}/>
          </View>
 
        </View>
