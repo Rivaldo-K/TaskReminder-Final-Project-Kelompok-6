@@ -3,10 +3,19 @@ import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpaci
 import Tugas from './src/components/Tugas'
 
 export default function App() {
-  const [task, setTask] = useState(); 
+  const [task, setTask] = useState();
+  const [taskItems, setTaskItems] = useState([]);
 
   const handleAddTask = () => {
-    console.log(task);
+    Keyboard.dismiss();
+    setTaskItems([...taskItems, task])
+    setTask(null);
+  }
+
+  const completeTask = (index) => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy)
   }
 
   return (
@@ -18,8 +27,17 @@ export default function App() {
 
          <View style={styles.items}>
            {/* Disini tempat tugas di input (Reyner Senduk dan Angelina Doringin)*/}
-           <Tugas text={'Tugas 1'}/>
-           <Tugas text={'Tugas 2'}/>
+           {
+             taskItems.map((item, index) => {
+               return (
+                 <TouchableOpacity key={index}  onPress={() => completeTask()}>
+                  <Tugas text={item} />
+                 </TouchableOpacity>
+               )
+             })
+           }
+           {/*<Tugas text={'Tugas 1'}/>
+           <Tugas text={'Tugas 2'}/>*/}
          </View>
 
        </View>
@@ -80,7 +98,7 @@ const styles = StyleSheet.create({
   addWrapper: {
     width: 60,
     height: 60,
-    borderColor: '#FFF',
+    backgroundColor: '#FFF',
     borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
