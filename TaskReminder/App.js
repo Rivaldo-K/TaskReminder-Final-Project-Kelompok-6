@@ -1,6 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import Task from './src/components/Task'
+import Tugas from './src/components/Tugas'
 const App = () => {
   return (
     <View style={styles.container}>
@@ -11,8 +11,8 @@ const App = () => {
 
          <View style={styles.items}>
            {/* Disini tempat tugas di input*/}
-           <Task text={'Task 1'}/>
-           <Task text={'Task 2'}/>
+           <Tugas text={'Tugas 1'}/>
+           <Tugas text={'Tugas 2'}/>
          </View>
 
        </View>
@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold'
   },
-  items: {},
+  items: {
+    marginTop: 30,
+  },
 })
 
 export default App
